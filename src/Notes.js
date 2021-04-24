@@ -157,3 +157,24 @@ connect function
     4- Return object [declare mapDispatchToProps as an object instead of as a function]
 */
 
+/*
+initial Redux setup
+===================
+    1- create actions
+    2- create reducer
+    3- create root reducer
+    4- configure store
+    5- instantiate store
+    6- connect component
+    7- pass props via connect 
+    8- dispatch action
+
+
+Add feature
+============
+    1- create action
+    2- enhance reducer
+    3- connect component
+    4- dispatch action
+*/
+
