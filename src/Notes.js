@@ -12,6 +12,7 @@ Redux : 3 principles
     state changes and handled by pure functions thes functions are called reducers 
 */
 
+
 /*
 Actions => ( Events )
 ==================
@@ -80,3 +81,79 @@ immer:
 =====
     library to handling imutable state
 */
+
+/*
+Reducer:
+========
+- it's a function that takes state in an action and returns new state
+- must be pure functions
+    this means that they should produce no side effects
+pure function => if calling it with the same set of arguments always returns the same value
+
+three things that you should never do in a reducer
+===================================================
+1- mutate arguments 
+2- perform side effects like API calls or routing transition
+3- call non-pure functions such as date.now, math.random
+
+
+- reducers should return an updated copy of state
+- Redux will use that copy to update the store 
+*/
+
+/* 
+Two component types
+====================
+
+    container                       |   presentation
+
+    - focue on how things work      |  - focue on how things look
+    - aware of Redux                |  - unaware of Redux
+    - subscribe to Redux state      |  - Read data from props
+    - dispatch Redux actions        |  - invoke callbaks on props
+
+*/
+
+/*
+Connecting React to Redux
+=========================
+React-Redux library handle the store with react ,
+it connects react continer components to redux
+*/
+
+/*
+React-Redux library
+===================
+consists of two core items
+
+provider component                  |  connect function
+- wraps entire app                  |   - connect react components to redux store
+- attaches app to store             |   - creates container components 
+
+- wrapping the app in provider      | -
+makes the redux store accessible 
+to every component in the app
+
+*/
+
+/*
+connect function
+=============
+- accepts two parameters, both are functions
+- export default connect(mapStateToProps , mapDispatchToProps)(myPage)
+    mapStateToProps (props) => 
+        - what state do you want to pass to your compponent as props
+        - returns an object
+    mapDispatchToProps(dispatch) => 
+        what actions do you want on props
+*/
+
+/*
+4 ways to Handle mapDispatchToProps
+===================================
+    1- ignore it [ it's an optional argument when you call connect function]
+    2- wrap manually
+    3- bindActionCreators
+    4- Return object [declare mapDispatchToProps as an object instead of as a function]
+*/
+
