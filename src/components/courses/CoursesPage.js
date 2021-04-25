@@ -66,6 +66,13 @@ function mapDispatchToProps(dispatch) {
   }
 }
 /*
+another way to handle mapDispatchToProps (preferred)
+const mapDispatchToProps = {
+    createCourse: courseActions.createCourse
+  }
+// when declared as an object, each property is automatically bound to dispatch
+*/
+/*
 mapDispatchToProps
   lets us declare what actions to pass to our component
   optional parameter
