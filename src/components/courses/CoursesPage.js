@@ -19,7 +19,7 @@ class CoursesPage extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    this.props.dispatch(courseActions.createCourse(this.state.course))
+    this.props.createCourse(this.state.course)
   }
 
   render() {
@@ -46,16 +46,22 @@ class CoursesPage extends React.Component {
   }
 }
 CoursesPage.propTypes = {
-  dispatch: propTypes.func.isRequired,
+  createCourse: propTypes.func.isRequired,
   courses: propTypes.array.isRequired
 }
 
 function mapStateToProps(state) {
-// determine what state to pass
-// ownProps => second parameter - this parameter lets us access props that are being attached to this component 
-// will used later
+  // determine what state to pass
+  // ownProps => second parameter - this parameter lets us access props that are being attached to this component 
+  // will used later
   return {
     courses: state.courses
+  }
+}
+
+function mapDispatchToProps(dispatch){
+  return {
+    createCourse: course => dispatch(courseActions.createCourse(course))
   }
 }
 /*
@@ -65,4 +71,4 @@ mapDispatchToProps
   when we omit it, our component gets a dispatch prop injected automatically 
   so we can use it to dispatch our actions
 */
-export default connect(mapStateToProps)(CoursesPage);
+export default connect(mapStateToProps, mapDispatchToProps)(CoursesPage);
