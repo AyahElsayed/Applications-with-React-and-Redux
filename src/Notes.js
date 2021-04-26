@@ -209,3 +209,12 @@ we're going to use some existing popular middleware to handle async API calls
     - redux-observable [ use RxJS observables ]
     - redux-saga [ use generators ]
 */
+
+/*
+thunk
+======
+    -is a function that return a funtion 
+    - wraps an expression to delay its evaluation
+    - redux thunk has access to the store 
+    - your components can call sync and async actions the same way 
+*/
