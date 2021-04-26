@@ -178,3 +178,16 @@ Add feature
     4- dispatch action
 */
 
+/*
+Mock Api ==> simulation for real Api
+- json-server simulates a database by writing to db.json
+
+mock db (db.json file)
+=====================
+    - is created each time we start the api 
+    - this assures the pi starts with good data
+
+start the api by run [ npm run start:api] in the command
+- we can update, post, delete 
+*/
+
