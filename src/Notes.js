@@ -191,3 +191,21 @@ start the api by run [ npm run start:api] in the command
 - we can update, post, delete 
 */
 
+/*
+Redux Middleware
+=================
+    - runs in between dispatching an action and the moment that it reaches the reducer
+    - action => middleware => reducer
+    - is a handy way to enhance Redux's behavior
+
+we're going to use some existing popular middleware to handle async API calls 
+*/
+
+/*
+4 libraries to handlling async
+==============================
+    - redux-thunk [ return functions from action creators instead of objects]
+    - redux-promise [ use promises for async ]
+    - redux-observable [ use RxJS observables ]
+    - redux-saga [ use generators ]
+*/
