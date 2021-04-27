@@ -5,18 +5,11 @@ import propTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 
 class CoursesPage extends React.Component {
-  
-  // handleChange = (event) => {
-  //   const course = { ...this.state.course, title: event.target.value }
-  //   console.log(course)
-  //   this.setState({ course })
-  // }
-
-  // handleSubmit = (event) => {
-  //   event.preventDefault()
-  //   this.props.actions.createCourse(this.state.course)
-  // }
-
+  componentDidMount(){
+    this.props.actions.loadCourses().catch(error => {
+      alert("Loading Courses Faild" + error)
+    })
+  }
   render() {
     return (
       <div>

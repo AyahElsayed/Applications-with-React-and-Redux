@@ -8,6 +8,8 @@ export default function courseReducer(state = [], action) {
             // state.push(action.course) // don't use push 
             return [...state, { ...action.course }]
         // whatever is returned from the reducer, becomes the new state for that particular reducer
+        case types.LOAD_COURSES_SUCCESS:
+            return action.courses
         default:
             return state
     }
