@@ -1,14 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from 'react-redux'
 import { loadCourses } from '../../redux/actions/courseActions'
 import { loadAuthors } from '../../redux/actions/authorActions'
 import propTypes from 'prop-types'
 
-class ManageCoursePage extends React.Component {
-    componentDidMount() {
-        const { courses, authors, loadCourses, loadAuthors } = this.props;
-
-        if (courses.length === 0) { // this condition to render one time
+function ManageCoursePage({ courses, authors, loadCourses, loadAuthors }) {
+    useEffect(() => {
+        if (courses.length === 0) {
             loadCourses().catch(error => {
                 alert("Loading courses failed" + error);
             });
@@ -18,15 +16,12 @@ class ManageCoursePage extends React.Component {
                 alert("Loading authors failed" + error);
             });
         }
-    }
-    render() {
-        return (
-            <div>
-
-                <h2>Manage Course</h2>
-            </div>
-        )
-    }
+    }, [])
+    return (
+        <div>
+            <h2>Manage Course</h2>
+        </div>
+    )
 }
 ManageCoursePage.propTypes = {
     authors: propTypes.array.isRequired,
