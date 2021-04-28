@@ -1,58 +1,53 @@
 import React from "react";
 import { connect } from 'react-redux'
-import * as courseActions from '../../redux/actions/courseActions'
-import * as authorActions from '../../redux/actions/authorActions'
+import { loadCourses } from '../../redux/actions/courseActions'
+import { loadAuthors } from '../../redux/actions/authorActions'
 import propTypes from 'prop-types'
-import { bindActionCreators } from 'redux'
 
 class ManageCoursePage extends React.Component {
-  componentDidMount() {
-    const { courses, authors, actions } = this.props;
+    componentDidMount() {
+        const { courses, authors, loadCourses, loadAuthors } = this.props;
 
-    if (courses.length === 0) { // this condition to render one time
-      actions.loadCourses().catch(error => {
-        alert("Loading courses failed" + error);
-      });
+        if (courses.length === 0) { // this condition to render one time
+            loadCourses().catch(error => {
+                alert("Loading courses failed" + error);
+            });
+        }
+        if (authors.length === 0) {
+            loadAuthors().catch(error => {
+                alert("Loading authors failed" + error);
+            });
+        }
     }
+    render() {
+        return (
+            <div>
 
-    if (authors.length === 0) {
-      actions.loadAuthors().catch(error => {
-        alert("Loading authors failed" + error);
-      });
+                <h2>Manage Course</h2>
+            </div>
+        )
     }
-  }
-  render() {
-    return (
-      <div>
-
-        <h2>Manage Course</h2>
-      </div>
-    )
-  }
 }
 ManageCoursePage.propTypes = {
-  authors: propTypes.array.isRequired,
-  actions: propTypes.object.isRequired,
-  courses: propTypes.array.isRequired
+    authors: propTypes.array.isRequired,
+    courses: propTypes.array.isRequired,
+    loadCourses: propTypes.func.isRequired,
+    loadAuthors: propTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
-  // determine what state to pass
-  // ownProps => second parameter - this parameter lets us access props that are being attached to this component 
-  // will used later
-  return {
-    courses:state.courses,
-    authors: state.authors
-  }
+    // determine what state to pass
+    // ownProps => second parameter - this parameter lets us access props that are being attached to this component 
+    // will used later
+    return {
+        courses: state.courses,
+        authors: state.authors
+    }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: {
-      loadCourses: bindActionCreators(courseActions.loadCourses, dispatch),
-      loadAuthors: bindActionCreators(authorActions.loadAuthors, dispatch)
-    }
-  }
+const mapDispatchToProps = {
+    loadCourses,
+    loadAuthors
 }
 /*
 another way to handle mapDispatchToProps (preferred)

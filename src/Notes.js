@@ -218,3 +218,8 @@ thunk
     - redux thunk has access to the store 
     - your components can call sync and async actions the same way 
 */
+
+/*
+if we declare mapDispatchToProps as an object instead of a function,
+each property will automatically be bound to dispatch 
+*/
