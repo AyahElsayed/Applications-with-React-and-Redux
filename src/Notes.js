@@ -223,3 +223,7 @@ thunk
 if we declare mapDispatchToProps as an object instead of a function,
 each property will automatically be bound to dispatch 
 */
+
+/*
+any component loaded via <Route> gets history passed in on props from React Router
+*/
