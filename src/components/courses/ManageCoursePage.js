@@ -15,12 +15,15 @@ function ManageCoursePage({ courses, authors, loadCourses, loadAuthors, saveCour
                 alert("Loading courses failed" + error);
             });
         }
+        else {
+            setCourse({...props.course})
+        }
         if (authors.length === 0) {
             loadAuthors().catch(error => {
                 alert("Loading authors failed" + error);
             });
         }
-    }, [])
+    }, [props.course])
 
     function handleChange(event) {
         const { name, value } = event.target;
@@ -59,12 +62,17 @@ ManageCoursePage.propTypes = {
     saveCourse: propTypes.func.isRequired
 }
 
-function mapStateToProps(state) {
+export function getCourseBySlug(courses, slug) {
+    return courses.find(course => course.slug === slug) || null;
+  }
+
+function mapStateToProps(state, ownProps) {
     // determine what state to pass
     // ownProps => second parameter - this parameter lets us access props that are being attached to this component 
-    // will used later
+    const slug = ownProps.match.params.slug
+    const course = slug ? getCourseBySlug(state.courses, slug) : newCourse
     return {
-        course: newCourse,
+        course,
         courses: state.courses,
         authors: state.authors
     }
